@@ -3,28 +3,28 @@ const gallery = document.getElementById("gallery");
 
 let images = JSON.parse(localStorage.getItem("bdImages")) || [];
 
-// afficher images sauvegardées
+// afficher images
 function render() {
   gallery.innerHTML = "";
 
-  images.forEach((img) => {
-    const image = document.createElement("img");
-    image.src = img;
-    gallery.appendChild(image);
+  images.forEach((imgSrc) => {
+    const img = document.createElement("img");
+    img.src = imgSrc;
+    gallery.appendChild(img);
   });
 
   localStorage.setItem("bdImages", JSON.stringify(images));
 }
 
-// upload images
+// upload
 fileInput.addEventListener("change", (e) => {
   const files = e.target.files;
 
   for (let file of files) {
     const reader = new FileReader();
 
-    reader.onload = function (event) {
-      images.push(event.target.result); // base64 image
+    reader.onload = function(event) {
+      images.push(event.target.result);
       render();
     };
 
@@ -33,3 +33,9 @@ fileInput.addEventListener("change", (e) => {
 });
 
 render();
+
+
+// SERVICE WORKER
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
+}
