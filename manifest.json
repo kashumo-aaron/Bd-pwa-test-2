@@ -3,12 +3,10 @@
   "short_name": "BD",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#111827",
-  "theme_color": "#111827",
   "icons": [
     {
-      "src": "https://img.icons8.com/clouds/500/book.png",
-      "sizes": "192x192",
+      "src": "icon.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ]
